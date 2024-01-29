@@ -5,8 +5,8 @@
 
 using namespace std;
 
-int fibonacci_cycle(int n);
-int fibonacci_recursion(int n);
+long long fibonacci_cycle(int n);
+long long fibonacci_recursion(int n);
 
 int main()
 {
@@ -25,13 +25,13 @@ int main()
 
 
 
-int fibonacci_cycle(int n)
+long long fibonacci_cycle(int n)
 {
     if (n == 0) return 0;
     if (n == 1) return 1;
-    int f0 = 0;
-    int f1 = 1;
-    int fibonacci = 0;
+    long long f0 = 0;
+    long long f1 = 1;
+    long long fibonacci = 0;
     
     for (int i = 1; i < n; i++) 
     {
@@ -43,7 +43,7 @@ int fibonacci_cycle(int n)
     return fibonacci;
 }
 
-int fibonacci_recursion(int n)
+long long fibonacci_recursion(int n)
 {
     if (n == 0) return 0;
     if (n == 1) return 1;
