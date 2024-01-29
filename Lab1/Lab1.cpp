@@ -2,11 +2,12 @@
 //
 
 #include <iostream>
+#include <chrono>
 
 using namespace std;
 
-long long fibonacci_cycle(int n);
-long long fibonacci_recursion(int n);
+unsigned long long fibonacci_cycle(int n);
+unsigned long long fibonacci_recursion(int n);
 
 int main()
 {
@@ -17,21 +18,33 @@ int main()
     cout << "Введите число N (N > 0): ";
     cin >> n;
 
+    const auto start{ std::chrono::steady_clock::now() };
+
     cout << fibonacci_cycle(n-1) << endl;
+
+    const auto stop1{ std::chrono::steady_clock::now() };
+
     cout << fibonacci_recursion(n-1) << endl;
+
+    const auto stop2{ std::chrono::steady_clock::now() };
+
+    const std::chrono::duration<double> d1{ stop1 - start };
+    const std::chrono::duration<double> d2{ stop2 - stop1 };
+    std::cout << "cycle: " << d1.count() << "\n";
+    std::cout << "recursion: " << d2.count() << "\n";
 
  
 }
 
 
 
-long long fibonacci_cycle(int n)
+unsigned long long fibonacci_cycle(int n)
 {
     if (n == 0) return 0;
     if (n == 1) return 1;
-    long long f0 = 0;
-    long long f1 = 1;
-    long long fibonacci = 0;
+    unsigned long long f0 = 0;
+    unsigned long long f1 = 1;
+    unsigned long long fibonacci = 0;
     
     for (int i = 1; i < n; i++) 
     {
@@ -43,7 +56,7 @@ long long fibonacci_cycle(int n)
     return fibonacci;
 }
 
-long long fibonacci_recursion(int n)
+unsigned long long fibonacci_recursion(int n)
 {
     if (n == 0) return 0;
     if (n == 1) return 1;
