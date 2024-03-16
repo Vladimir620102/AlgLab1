@@ -1,4 +1,5 @@
 ﻿/*
+* СОРТИРОВКИ
 Разработать приложение реализующие сортировки массивов числовых данных.
 1.	Пользователь вводит число N (может быть достаточно большое).
 2.	Приложение генерирует N числовых значений массива А.
@@ -11,6 +12,7 @@
 */
 
 #include <iostream>
+#include <chrono>
 using namespace std;
 
 void bubble_sort(int* array_values, int count);
@@ -56,39 +58,53 @@ int main()
     cout << endl;
     cout << endl;
     cout << "bubble sort:" << endl;
+    const auto b_s_start{ chrono::steady_clock::now() };
     bubble_sort(B, n);
+    const auto b_s_stop{ chrono::steady_clock::now() };
     for (int i = 0; i < n; i++)
     {
         cout << *(B + i) << " ";
     }
+    cout << endl << "bubble sort took " << std::chrono::duration<double>(b_s_stop - b_s_start).count() << endl;
 
     //  6.	Замерив время выполнения отсортировать массив С сортировкой вставкой(или методом Шелла).Вывести отсортированный массив и затраченное время на экран.
         
     cout << endl;
     cout << "sort Shell:" << endl;
+    const auto s_s_start{ chrono::steady_clock::now() };
     sort_shell(C, n);
+    const auto s_s_stop{ chrono::steady_clock::now() };
     for (int i = 0; i < n; i++)
     {
         cout << *(C + i) << " ";
     }
+    cout << endl << "Shell sort took " << std::chrono::duration<double>(s_s_stop - s_s_start).count() << endl;
+
 
 //  7.	Замерив время выполнения отсортировать массив D сортировкой выбора.Вывести отсортированный массив и затраченное время на экран.
     cout << endl;
     cout << "sort section:" << endl;
+    const auto sel_s_start{ chrono::steady_clock::now() };
     sort_selection(D, n);
+    const auto sel_s_stop{ chrono::steady_clock::now() };
     for (int i = 0; i < n; i++)
     {
         cout << *(D + i) << " ";
     }
+    cout << endl << "sort selection took " << std::chrono::duration<double>(sel_s_stop - sel_s_start).count() << endl;
 
 //  8.	Замерив время выполнения отсортировать массив Е быстрой сортировкой.Вывести отсортированный массив и затраченное время на экран.
     cout << endl;
     cout << "quick sort:" << endl;
+    const auto q_s_start{ chrono::steady_clock::now() };
     quick_sort(E, 0, n-1);
+    const auto q_s_stop{ chrono::steady_clock::now() };
     for (int i = 0; i < n; i++)
     {
         cout << *(E + i) << " ";
     }
+    cout << endl << "quick sort took " << std::chrono::duration<double>(q_s_stop - q_s_start).count() << endl;
+
 
     delete[] A;
     delete[] B;
