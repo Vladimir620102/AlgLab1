@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{24589738-fdbe-44e3-bb67-6c89695956b1}</ProjectGuid>
-    <RootNamespace>Lab6correct</RootNamespace>
+    <ProjectGuid>{8aaacd85-909d-4161-b01e-ffb91e0ebdc8}</ProjectGuid>
+    <RootNamespace>lab6openaddressing</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Lab6_chaining</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -129,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="HashTable.cpp" />
-    <ClCompile Include="chaining.cpp" />
+    <ClCompile Include="lab6_open_addressing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HashTable.h" />

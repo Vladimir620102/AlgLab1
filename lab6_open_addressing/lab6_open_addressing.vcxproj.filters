@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="chaining.cpp">
+    <ClCompile Include="lab6_open_addressing.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="HashTable.cpp">
