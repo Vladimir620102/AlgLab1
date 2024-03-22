@@ -6,12 +6,22 @@
 Выход : Порядок пробивания на кассе и число – максимальная сумма чека.
 */
 
+/*
+* Задание 2
+* По результатам олимпиады участники награждаются дипломами. 
+* Набравшие одинаковые баллы получают дипломы одинаковой степени. 
+* Призером олимпиады считается участник, получивший диплом не хуже III степени.
+*/
+
+// Второе задание НЕ правильно!
+
 #include <iostream>
 
 
 void task1();
 void task2();
 void quick_sort(int* array_values, int left, int right);
+void task2correct();
 
 using namespace std;
 
@@ -21,7 +31,7 @@ int main()
     task1();
     cout << endl;
     cout << endl;
-    task2();
+    task2correct();
 }
 
 void task1() 
@@ -52,6 +62,54 @@ void task1()
         sum = sum + *(B + n - i - 1);   //идем с конца
     cout << endl;
     cout << "Наибольшая сумма чека:" << sum << endl;
+}
+
+void task2correct()
+{
+    int n;
+    cout << "Введите натуральное число участников (N < 10000): ";
+    cin >> n;
+    //  сгенерировать результаты участников (Например, от 1 до 100) в массив А.
+    int* A = new int[n];
+    int* B = new int[n];
+
+    time_t seconds = time(NULL);
+    srand(seconds);
+    int p = 0;
+    for (int i = 0; i < n; i++)
+    {
+        *(A + i) = rand() % 100;
+        *(B + i) = *(A + i);
+        cout << *(A + i) << " ";
+    }
+    cout << endl;
+    quick_sort(B, 0, n - 1);
+    int nI = 0, nII = 0, nIII = 0;
+    int vI = 0, vII = 0, vIII = 0;
+    vI = B[n - 1]; // результат призёра
+    int i = n - 1;
+    while (B[i] == vI)
+    {
+        nI++;
+        i--;
+    }
+    i--;
+    vII = B[i];
+    while (B[i] == vII)
+    {
+        nII++;
+        i--;
+    }
+    i--;
+    vIII = B[i];
+    while (B[i] == vIII)
+    {
+        nIII++;
+        i--;
+    }
+
+    cout << "число призеров: " << nI + nII + nIII << endl;
+
 }
 
 void task2() 
