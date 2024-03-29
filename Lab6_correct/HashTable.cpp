@@ -4,7 +4,7 @@ int HashTable::hashFunction(int value)
 	std::hash<int> h;
 	return h(value) % size;
 }
-void HashTable::add(int key, int value)
+void HashTable::add(int key, std::string value)
 {
 	auto position = hashFunction(key);
 	data[position].push_back(Element(key, value));
@@ -19,6 +19,7 @@ Element HashTable::get(int key)
 			return elem;
 		}
 	}
+	return Element(-1, "Not found");
 }
 void HashTable::remove(int key)
 {
@@ -34,14 +35,14 @@ void HashTable::remove(int key)
 			break;
 	}
 }
-Element HashTable::update(int key, int value)
+Element HashTable::update(int key, std::string value)
 {
 	auto position = hashFunction(key);
-	for (auto elem : data[position])
+	for (auto &elem : data[position])
 	{
 		if (elem.key == key)
 		{
-			elem.data = value;
+			elem.fio = value;
 			return elem;
 		}
 	}
@@ -53,7 +54,7 @@ void HashTable::print()
 	{
 		for (auto it = this->data[i].begin(); it != this->data[i].end(); it++)
 		{
-			printf("%d: %d\n",(*it).key, (*it).data);
+			printf("%d: %s\n",(*it).key, (*it).fio.c_str());
 		}
 	}
 }

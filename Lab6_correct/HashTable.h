@@ -2,23 +2,32 @@
 #include <array>
 #include <list>
 #include <vector>
+#include <string>
 class Element
 {
 public:
 	int key;
-	int data;
+	static const int PHONE_MAX = 32767;
+	std::string fio;
 	Element()
 	{
-		key = 0; data = 0;
+		key = 0; fio = "";
 	}
-	Element(int key, int data)
+	Element(int key, std::string fio)
 	{
-		this->key = key;
-		this->data = data;
+		if (key >= PHONE_MAX)
+		{
+			this->key = 0, this->fio = "";
+		}
+		else
+		{
+			this->key = key;
+			this->fio = fio;
+		}
 	}
 	bool operator == (const Element& element) const
 	{
-		return (this->key == element.key && this->data == element.data);
+		return (this->key == element.key && this->fio == element.fio);
 	}
 };
 
@@ -34,9 +43,9 @@ public:
 		this->size = size;
 		data = std::vector<std::list<Element>>(size);
 	}
-	void add(int key, int value);
+	void add(int key, std::string value);
 	Element get(int key);
 	void remove(int key);
-	Element update(int key, int value);
+	Element update(int key, std::string value);
 	void print();
 };

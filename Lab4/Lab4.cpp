@@ -52,6 +52,7 @@ void task1()
         cout << *(A + i) << " ";
         *(B + i) = *(A + i);
     }
+    cout << endl;
 
     quick_sort(B, 0, n - 1); // сортировка по возрастанию
 
@@ -59,7 +60,10 @@ void task1()
 
     int sum = 0;
     for (int i = 0; i < middle; i++)
+    {
+        cout << *(B + n - i - 1) << "-" << i << ", ";
         sum = sum + *(B + n - i - 1);   //идем с конца
+    }
     cout << endl;
     cout << "Наибольшая сумма чека:" << sum << endl;
 }
@@ -108,6 +112,7 @@ void task2correct()
         i--;
     }
 
+    cout << "результаты призеров: " << vI << " " << vII << " " << vIII << endl;
     cout << "число призеров: " << nI + nII + nIII << endl;
 
 }
