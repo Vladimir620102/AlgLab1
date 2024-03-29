@@ -46,3 +46,14 @@ Element HashTable::update(int key, int value)
 		}
 	}
 }
+
+void HashTable::print()
+{
+	for (int i = 0; i < this->size; i++)
+	{
+		for (auto it = this->data[i].begin(); it != this->data[i].end(); it++)
+		{
+			printf("%d: %d\n",(*it).key, (*it).data);
+		}
+	}
+}
