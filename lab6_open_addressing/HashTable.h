@@ -2,6 +2,7 @@
 #include <array>
 #include <list>
 #include <string>
+#include <vector>
 class Element
 {
 public:
@@ -27,9 +28,14 @@ class HashTableOA
 {
 	static const int size = 10;
 	std::array<Element, size> data;
+	std::vector<Element> data1;
 
 	int hashFunction(int value);
 public:
+	HashTableOA(int size)
+	{
+		data1 = std::vector<Element>(size);
+	}
 	void add(int key, std::string value);
 	Element get(int key);
 	void remove(int key);
