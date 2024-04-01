@@ -85,13 +85,14 @@ int main()
                 || c2 == '[' && c == ']'
                 || c2 == '{' && c == '}'))
             {
+                
                 flag_success = false;
                 break;
             }
         }
     }   
     
-    if(flag_success)
+    if(flag_success && steck.is_empty())
         cout << "скобки расставлены верно" << endl;
     else
         cout << "скобки расставлены неверно" << endl;
