@@ -52,7 +52,7 @@ int main()
 {
     setlocale(LC_CTYPE, "Russian");
     
-    stack steck;
+    stack st;
 
     string source;
     cout << "Введите символьную строку, которая может содержать цифры, буквы, " <<
@@ -67,19 +67,19 @@ int main()
         // Если текущий символ строки — открывающая скобка, то кладём его в стек
         if (c == '(' || c == '[' || c == '{') 
         {
-            steck.push(c); 
+            st.push(c); 
             continue;
         }
         // если закрывающая скобка
         if (c == ')' || c == ']' || c == '}') {
             // проверяем, что стек не пуст
-            if (steck.is_empty()) 
+            if (st.is_empty()) 
             {
                 flag_success = false;
                 break;
             }
             // извлекаем символ из стека
-            char c2 = steck.pop();
+            char c2 = st.pop();
             // и проверяем, что это скобка того же типа, что и текущая
             if (!( c2 == '(' && c == ')'
                 || c2 == '[' && c == ']'
@@ -92,12 +92,12 @@ int main()
         }
     }   
     
-    if(flag_success && steck.is_empty())
+    if(flag_success && st.is_empty())
         cout << "скобки расставлены верно" << endl;
     else
         cout << "скобки расставлены неверно" << endl;
 
-    steck.free();
+    st.free();
 }
 
 
